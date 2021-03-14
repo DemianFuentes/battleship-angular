@@ -1,0 +1,59 @@
+@import '~src/assets/styles/variables.scss';
+@import '~src/assets/styles/mixin.scss';
+
+@mixin tile {
+  @include noselect;
+  border: 1px solid #dbdbdb;
+  vertical-align: middle;
+  height: $height_tile;
+  max-height: $height_tile;
+  min-height: $height_tile;
+  width: $width_tile;
+  max-width: $width_tile;
+  min-width: $width_tile;
+  text-align: center;
+}
+
+.battleship-tile {
+  @include tile;
+  cursor: pointer;
+  background-color: $color_background_battleship_tile;
+
+  &.sunk{
+    @extend .ship-tile;
+  }
+  &.fail {
+    background-color: $color_background_battleship_tile_used !important;
+  }
+  &.selected-tile {
+    background-color: $color_background_battleship_tile_selected;
+    opacity: 0.3;
+  }
+}
+
+.battleship-tile-header {
+  @include tile;
+  background-color: $color_background_battleship_tile_header;
+  font-weight: bold;
+}
+
+.ship-tile {
+  @include tile;
+  background-color: $color_background_sunk_ship !important;
+
+  &:before {
+    content: $content_sunk_ship;
+    color: $color_sunk_ship;
+    font-weight: bold;
+    font-size: 24px;
+  }
+}
+
+.sunk-ship-header {
+  font-size: 1.5rem;
+}
+
+.keyboard-instructions {
+  font-size: 0.75rem;
+  font-style: italic;
+}

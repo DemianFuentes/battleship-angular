@@ -1,0 +1,17 @@
+{
+  "BattleShip": "BattleShip",
+  "Spanish":    "Spanish",
+  "English":    "English",
+  "Made by Demian": "Made by Demian",
+  "Thanks for playing": "Thanks for playing",
+  "Easy": "Easy",
+  "Medium": "Medium",
+  "Hard": "Hard",
+  "Go!": "Go!",
+  "attempts": "attempts",
+  "Custom": "Custom",
+  "New game": "New game",
+  "Change difficulty": "Change difficulty",
+  "Amount of sunken ships": "Amount of sunken ships",
+  "keyboardInstructions": "Try using arrow keys, [A-{{lastLetter}}], [1-{{lastDigit}}] and Space or Enter for shooting!"
+}

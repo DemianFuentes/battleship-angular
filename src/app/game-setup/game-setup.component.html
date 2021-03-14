@@ -1,0 +1,20 @@
+<div class="difficulty-picker row">
+  <div class="col-12 text-center">
+    <span class="difficulty" [routerLink]="['/game']" [queryParams]="{ attempts: null }">{{'Easy' | translate}}</span>
+  </div>
+  <div class="col-12 text-center">
+    <span class="difficulty" [routerLink]="['/game']" [queryParams]="{ attempts: 100 }">{{'Medium' | translate}}</span>
+  </div>
+  <div class="col-12 text-center">
+    <span class="difficulty" [routerLink]="['/game']" [queryParams]="{ attempts: 50 }">{{'Hard' | translate}}</span>
+  </div>
+  <div class="col-12 text-center">
+    <span class="difficulty" (click)="isCustomSelected=true" [ngClass]="{'selected':isCustomSelected}">{{'Custom' | translate}}</span>
+    <div class="custom-attempts-container">
+      <input [hidden]="!isCustomSelected" [(ngModel)]="customAttempts" type="number" placeholder="{{'attempts' | translate}}" class="custom-attempts-input"/>
+      <button [hidden]="!customAttempts" class="btn btn-play" [routerLink]="['/game']" [queryParams]="{ attempts: customAttempts }">
+        {{'Go!' | translate}}
+      </button>
+    </div>
+  </div>
+</div>

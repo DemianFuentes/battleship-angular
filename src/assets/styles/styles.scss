@@ -1,0 +1,7 @@
+@import 'variables';
+@import '~bootstrap/scss/bootstrap';
+
+body {
+  //@extend %font-fira-normal;
+  background-color: $color_background_body;
+}

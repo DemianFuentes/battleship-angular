@@ -1,0 +1,17 @@
+{
+  "BattleShip": "Batalla Naval",
+  "Spanish":    "Español",
+  "English":    "Inglés",
+  "Made by Demian": "Hecho por Demian",
+  "Thanks for playing": "Gracias por jugar",
+  "Easy": "Fácil",
+  "Medium": "Medio",
+  "Hard": "Difícil",
+  "Go!": "Ir!",
+  "attempts": "intentos",
+  "Custom": "Personalizada",
+  "New game": "Nuevo juego",
+  "Change difficulty": "Cambiar dificultad",
+  "Amount of sunken ships": "Cantidad de barcos hundidos",
+  "keyboardInstructions": "Prueba usar las flechas, [A-{{lastLetter}}], [1-{{lastDigit}}] y Espacio o Enter para disparar!"
+}

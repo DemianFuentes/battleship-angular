@@ -1,0 +1,41 @@
+<div class="col mt-3">
+  <div class="row">
+    <div class="col-4">
+      <div class="row">
+        <div class="col-12 sunk-ship-header">{{'Amount of sunken ships' | translate}}: {{board.getAmountOfSunkenShips()}}</div>
+        <div class="col fade" *ngFor="let ship of board.ships" [class.show]="ship.isSunk()">
+          <table class="my-3">
+            <tr *ngFor="let tile of arrayOf(ship.totalTiles)">
+              <td class="ship-tile"></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-8">
+      <table *ngIf="board" class="board">
+        <tr>
+          <td class="battleship-tile-header"></td>
+          <td *ngFor="let tile of board.tiles[0]; let i = index" class="battleship-tile-header">
+            {{ i+1 }}
+          </td>
+        </tr>
+        <tr *ngFor="let row of board.tiles; let i = index">
+          <td class="battleship-tile-header">
+            {{ numberToLetter(i) }}
+          </td>
+          <td *ngFor="let tile of row; let j = index"
+              class="battleship-tile"
+              [class.selected-tile]="selectedTile && selectedTile.row == i && selectedTile.col == j"
+              [class.sunk]="tile.used && tile.ship"
+              [class.fail]="tile.used && !tile.ship"
+              (click)="fire(tile)">
+            <!--                tabindex="{{ (i *  row.length) + j}}">-->
+<!--                            {{ tile.ship ? '' : (tile.used ? 'X': 'O')}}-->
+          </td>
+        </tr>
+      </table>
+      <span class="keyboard-instructions">{{ 'keyboardInstructions' | translate: {lastLetter: numberToLetter(board.tiles.length-1), lastDigit: board.tiles[0].length} }}</span>
+    </div>
+  </div>
+</div>

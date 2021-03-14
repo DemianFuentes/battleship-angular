@@ -1,0 +1,38 @@
+.difficulty-picker {
+  margin-top: 4rem;
+
+  & .difficulty {
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    transition: all .2s ease-in-out;
+
+    &:hover, &.selected { transform: scale(1.5); }
+  }
+
+  & .custom-attempts-container {
+    display: inline-block;
+    margin-left: 2rem;
+    line-height: 2rem;
+    position: absolute;
+    top: 0.3rem;
+    .custom-attempts-input {
+      width: 4.5em;
+      text-align: center;
+    }
+    .btn-play {
+      background-color: #04b0ff;
+      margin-left: 10px;
+      border-radius: 40px;
+      padding: 10px;
+      font-weight: 500;
+      box-shadow: black -1px 1px;
+      &:hover {
+        box-shadow: black -1px 1px 3px;
+        border: 1px solid;
+      }
+    }
+  }
+}
