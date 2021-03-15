@@ -1,6 +1,12 @@
 <div class="row login-container">
   <div class="col-12">
-    <input class="player-name" type="text" placeholder="Choose your name"/>
-    <button class="btn btn-success" [routerLink]="['/setup']">Play</button>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <input #playerNameInput class="player-name" formControlName="playerName" type="text" placeholder="{{'Choose your name' | translate}}"/>
+      <div class="form-control-feedback" [class.invisible]="!playerName.errors || !(playerName.dirty || playerName.touched)">
+        <span [style.display]="playerName.errors?.required ? 'block' : 'none'">{{'Required' | translate}}</span>
+<!--        <span [style.display]="playerName.errors?.usedPlayerName ? 'block' : 'none'">{{'Already used name' | translate}}</span>     TODO multiplayer: enable + i18n    -->
+      </div>
+      <button class="btn btn-success" type="submit" [disabled]="loginForm.invalid">{{'Play' | translate}}</button>
+    </form>
   </div>
 </div>

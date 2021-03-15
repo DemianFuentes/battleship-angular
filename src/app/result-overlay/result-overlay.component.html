@@ -1,0 +1,39 @@
+<div class="results-container" [ngClass]="{'d-none': !show, 'show': show, 'win':win, 'loss':!win}">
+  <div class="row text-center">
+    <div class="col-12 result-text">
+      {{(win ? 'YOU WIN' : 'GAME OVER') | translate}}
+    </div>
+    <div class="col-12 btn-restart-group">
+      <button class="btn btn-danger" [routerLink]="['/setup']">{{'Change difficulty' | translate}}</button>
+      <button class="btn btn-info" (click)="restartGame()">{{(win ? 'Play again' : 'Try again') | translate}}</button>
+      <button class="btn btn-light" (click)="askForConfirmation()">{{'Clear game history' | translate}}</button>
+    </div>
+    <div class="col-12 results-list">
+      <div class="table-container">
+        <table *ngIf="show" class="results-table">
+          <thead>
+            <tr>
+              <th>{{'Player' | translate}}</th>
+              <th>{{'Start Time' | translate}}</th>
+              <th>{{'End Time' | translate}}</th>
+              <th>{{'Turns used' | translate}}</th>
+              <th>{{'Overall accuracy' | translate}}</th>
+              <th>{{'Status' | translate}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let game of playerService.getGameHistory()" class="{{game.win ? 'won' : 'lost'}}">
+              <td>{{game.player.name}}</td>
+              <td>{{game.startTime | date: 'MM-dd-yyyy hh:mm a'}}</td>
+              <td>{{game.endTime | date: 'MM-dd-yyyy hh:mm a'}}</td>
+              <td>{{game.usedAttempts}}</td>
+              <td>{{(100 * game.successfulAttempts / game.usedAttempts) | number:'1.0-2'}}%</td>
+              <td>{{game.win ? 'WON' : 'LOST' | translate}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<app-confirmation-modal (yesClicked)="clearGameHistory()"></app-confirmation-modal>

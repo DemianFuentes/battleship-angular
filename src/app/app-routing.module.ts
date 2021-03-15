@@ -5,14 +5,13 @@ import { GameBoardComponent } from './game-board/game-board.component';
 import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
-  // { path: '', redirectTo: '/login', pathMatch: 'full' },
-  // { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: '/setup', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
   { path: 'setup', component: GameSetupComponent },
   { path: 'game', component: GameBoardComponent },
 
   // Otherwise redirect to home
-  { path: '**', redirectTo: 'setup', pathMatch: 'full' }
+  { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
 @NgModule({

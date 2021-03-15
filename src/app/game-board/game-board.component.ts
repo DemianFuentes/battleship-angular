@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BoardService } from '../../services/board.service';
 import { Board } from '../../model/board';
-import { isValid } from 'ngx-bootstrap/chronos/create/valid';
+import { PlayerService } from '../../services/player.service';
+import { GameResult } from '../../model/game-result';
+import { Difficulty } from '../../model/difficulty';
 
 @Component({
   selector: 'app-game-board',
@@ -11,23 +13,37 @@ import { isValid } from 'ngx-bootstrap/chronos/create/valid';
 })
 export class GameBoardComponent implements OnInit {
 
-  totalAttempts: number;
-  currentAttempts: number = 0;
   board: Board;
+  gameStatus: GameResult;
+  currentDifficulty: Difficulty;
+  finishedGame: boolean;
 
   constructor(
     private route: ActivatedRoute,
-    private boardService: BoardService
+    private boardService: BoardService,
+    private playerService: PlayerService
   ) {  }
 
   ngOnInit() {
     this.route.queryParams.subscribe(
       params => {
-        this.totalAttempts = params.attempts;
+        const attempts = params.attempts ? parseInt(params.attempts) : null;
+        this.initGame(attempts);
         this.createBoard();
       },
       err => console.error(err)
     );
+  }
+
+  initGame(allowedAttempts: number) {
+    this.currentDifficulty = Difficulty.getDifficultyByAttempts(allowedAttempts);
+    this.gameStatus = new GameResult({
+      startTime : new Date(),
+      totalAttemptsAllowed : allowedAttempts,
+      successfulAttempts : 0,
+      usedAttempts : 0,
+      win : false
+    });
   }
 
   createBoard() {
@@ -39,14 +55,22 @@ export class GameBoardComponent implements OnInit {
     window.location.reload();
   }
 
-  onFire() {
-    this.currentAttempts += 1;
-    if (this.board.areAllShipSunk()) {
-      // TODO WIN GAME
-      alert('WIN!');
-    } else if (this.currentAttempts >= this.totalAttempts) {
-      // TODO GAME OVER
-      alert('GAME OVER!');
+  onFire({targetShip: ship = null}) {
+    this.gameStatus.usedAttempts += 1;
+    if (ship) {
+      this.gameStatus.successfulAttempts += 1;
     }
+    if (this.isGameFinished()) {
+      this.gameStatus.endTime = new Date();
+      this.gameStatus.win = this.board.areAllShipSunk();
+      this.playerService.storeGameResultForCurrentPlayer(this.gameStatus);
+
+      setTimeout(() => this.finishedGame = true, 1500);
+    }
+  }
+
+  isGameFinished() {
+    return this.board.areAllShipSunk() ||
+      (this.gameStatus.totalAttemptsAllowed && this.gameStatus.usedAttempts >= this.gameStatus.totalAttemptsAllowed);
   }
 }

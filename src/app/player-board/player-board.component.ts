@@ -9,18 +9,26 @@ import { Board } from '../../model/board';
 export class PlayerBoardComponent implements OnInit {
 
   @Input() board: Board;
+  @Input() disabled: boolean;
   @Output() fired: EventEmitter<any> = new EventEmitter<any>();
-  selectedTile: {row: number, col: number} = null;
+  selectedTile = {showSelection: false, row: 0, col: 0};
   digitsPressed: string = '';
+  shipsAmountByTiles: { tiles: number, amount: number }[];
 
   constructor() { }
 
   ngOnInit() {
-  }
+    const amountByTiles = this.board.ships.reduce((accum, ship) => {
+      const spaces = ship.totalTiles;
+      if (!accum[spaces]) {
+        accum[spaces] = { tiles: spaces, amount: 0 };
+      }
+      accum[spaces].amount += 1;
+      return accum;
+    }, {});
 
-  @HostListener('window:click')
-  onMouseClick() {
-    this.selectedTile = null;
+    const amountByTitleList: { tiles: number, amount: number }[] = Object.values(amountByTiles);
+    this.shipsAmountByTiles = amountByTitleList.sort((e1, e2) => e1.tiles - e2.tiles);
   }
 
   @HostListener('window:keydown', ['$event'])
@@ -28,9 +36,11 @@ export class PlayerBoardComponent implements OnInit {
     const maxRowIndex = this.board.tiles.length - 1;
     const maxColIndex = this.board.tiles[0].length - 1;
 
-    if (this.selectedTile == null) {
-      this.selectedTile = {row: 0, col: 0};
+    if (this.disabled) {
+      return;
     }
+
+    this.selectedTile.showSelection = true;
 
     if (/^\d$/.test(event.key)) { // it's a digit
       this.digitsPressed += event.key;
@@ -76,16 +86,17 @@ export class PlayerBoardComponent implements OnInit {
     if (this.isValidShot(tile)) {
       tile.used = true;
 
-      if (tile.ship) {
-        tile.ship.gettingShot();
+      const ship = tile.ship;
+      if (ship) {
+        ship.gettingShot();
       }
 
-      this.fired.emit();
+      this.fired.emit({targetShip: ship});
     }
   }
 
   isValidShot(tile: any): boolean {
-    return !tile.used;
+    return !tile.used && !this.disabled;
   }
 
   /**
@@ -104,5 +115,11 @@ export class PlayerBoardComponent implements OnInit {
 
   arrayOf(number: number) {
     return Array(number).fill(undefined);
+  }
+
+  selectTile(row: number, col: number) {
+    this.selectedTile.row = row;
+    this.selectedTile.col = col;
+    this.selectedTile.showSelection = true;
   }
 }

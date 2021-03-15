@@ -1,6 +1,9 @@
 @import '~src/assets/styles/variables.scss';
 @import '~src/assets/styles/mixin.scss';
 
+:host {
+  width: 100%;
+}
 @mixin tile {
   @include noselect;
   border: 1px solid #dbdbdb;
@@ -53,7 +56,12 @@
   font-size: 1.5rem;
 }
 
-.keyboard-instructions {
+.explanation-text {
+  display: inline-block;
   font-size: 0.75rem;
   font-style: italic;
+
+  & + .explanation-text:before {
+    content: $explanation_text_separator;
+  }
 }

@@ -10,10 +10,15 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { GameBoardComponent } from './game-board/game-board.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BoardService } from '../services/board.service';
 import { PlayerBoardComponent } from './player-board/player-board.component';
 import { LoginComponent } from './login/login.component';
+import { StorageService } from '../services/storage.service';
+import { PlayerService } from '../services/player.service';
+import { ResultOverlayComponent } from './result-overlay/result-overlay.component';
+import { ConfirmationModalComponent } from './confirmation-modal/confirmation-modal.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -27,7 +32,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     FooterComponent,
     GameBoardComponent,
     PlayerBoardComponent,
-    LoginComponent
+    LoginComponent,
+    ResultOverlayComponent,
+    ConfirmationModalComponent
   ],
   imports: [
     BrowserModule,
@@ -40,9 +47,11 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    ModalModule.forRoot()
   ],
-  providers: [BoardService],
+  providers: [BoardService, StorageService, PlayerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

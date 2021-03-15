@@ -1,9 +1,9 @@
 <div class="header row">
   <div class="col-2">
-    <div class="logo"></div>
+    <div class="logo clickable" [routerLink]="['/login']"></div>
   </div>
   <div class="col-8 text-center title">
-    <span>{{'BattleShip' | translate}}</span>
+    <span class="clickable" [routerLink]="['/login']">{{'BattleShip' | translate}}</span>
   </div>
   <div class="col-2">
     <button [title]="'Spanish' | translate" type="button" class="btn flag flag-spanish" (click)="selectLanguage('es')"></button>

@@ -6,6 +6,7 @@ $color_footer_background: #B8BFC6;
 $color_header_background: #00bfa5;
 $color_background_logo: white;
 $color_background_body: #E6F7FF;
+$color_background_btn_custom_play: #04b0ff;
 $color_background_battleship_tile_header: #ccc;
 $color_background_battleship_tile: #007BFF40;
 $color_background_sunk_ship: #ff000038;
@@ -18,6 +19,8 @@ $content_sunk_ship: 'X';
 
 $height_tile: 40px;
 $width_tile: 40px;
+
+$explanation_text_separator: '\00a0-\00a0';
 
 // ---
 $dark_grey: #646f79;

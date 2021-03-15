@@ -1,23 +1,36 @@
+@import '~src/assets/styles/variables.scss';
 
 .login-container {
   height: 50vh;
 
-  .player-name {
-    position: relative;
-    top: 50%;
-    display: block;
-    margin: auto;
-    line-height: 2.5rem;
-    width: 20%;
-    min-width: 10rem;
-    border-radius: 3rem;
-    text-align: center;
-  }
+  form {
+    margin-top: 20vh;
+    .player-name {
+      position: relative;
+      top: 50%;
+      display: block;
+      margin: auto;
+      line-height: 2.5rem;
+      width: 20%;
+      min-width: 10rem;
+      border-radius: 3rem;
+      text-align: center;
+      outline: none;
+    }
 
-  .btn {
-    position: relative;
-    top: 50%;
-    display: block;
-    margin: 2rem auto;
+    .btn {
+      position: relative;
+      top: 50%;
+      display: block;
+      margin: 0.8rem auto;
+    }
+
+    .form-control-feedback {
+      width: 100%;
+      margin: 0.25rem auto;
+      font-size: 80%;
+      color: #dc3545;
+      width: 20%;
+    }
   }
 }

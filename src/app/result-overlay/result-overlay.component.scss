@@ -1,0 +1,76 @@
+@import '~src/assets/styles/variables.scss';
+@import '~src/assets/styles/mixin.scss';
+@import '~bootstrap/scss/bootstrap';
+
+.results-container {
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 80vh;
+
+  .result-text {
+    line-height: 20vh;
+    font-size: 15vh;
+    font-family: auto;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  &.win {
+    background: rgb(17,136,0);
+    background: linear-gradient(35deg, rgba(17,136,0,1) 0%, rgba(110,198,94,1) 35%, rgba(181,251,169,1) 100%);
+    //background: radial-gradient(circle, rgba(17,136,0,1) 0%, rgba(110,198,94,1) 35%, rgba(181,251,169,1) 100%);
+
+    .result-text {
+      text-shadow: -2px -2px yellow, 2px -2px yellow, -2px 2px yellow, 2px 2px yellow;
+      color: #FFFFBA;
+    }
+  }
+
+  &.loss {//B5FBA9
+    background: rgb(46,0,2);
+    background: linear-gradient(35deg, rgba(46,0,2,1) 0%, rgba(82,0,2,1) 35%, rgb(123, 0, 3) 100%);
+
+    .result-text {
+      text-shadow: -2px -2px yellow, 2px -2px yellow, -2px 2px yellow, 2px 2px yellow;
+      color: #FFFFBA;
+    }
+  }
+
+  .btn-restart-group {
+    @extend .mt-3;
+
+    .btn + .btn {
+      @extend .ml-5;
+    }
+  }
+
+  .results-list {
+    @extend .mt-3;
+
+    .table-container {
+      max-height: 45vh;
+      overflow: auto;
+      display: inline-block;
+
+      .results-table {
+        width: 70vw;
+        background-color: white;
+        border: 2px solid;
+        tr {
+          border-top: 1px solid;
+          &.lost {
+            background-color: #7B000340;
+          }
+          &.won {
+            background-color: #B5FBA960;
+          }
+        }
+      }
+    }
+  }
+}
