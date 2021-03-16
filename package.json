@@ -4,12 +4,16 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
   "private": true,
+  "engines": {
+    "node": "8.9.1",
+    "npm": "5.5.1"
+  },
   "dependencies": {
     "@angular/animations": "^6.1.10",
     "@angular/common": "^6.1.10",
