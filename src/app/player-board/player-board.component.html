@@ -31,8 +31,9 @@
               class="battleship-tile"
               (mouseover)="selectTile(i,j)"
               [class.selected-tile]="selectedTile?.showSelection && selectedTile.row == i && selectedTile.col == j"
-              [class.sunk]="tile.used && tile.ship"
               [class.fail]="tile.used && !tile.ship"
+              [class.hit]="tile.used && tile.ship"
+              [class.sunk]="tile.used && tile.ship && tile.ship.isSunk()"
               (click)="fire(tile)">
 <!--                            {{ tile.ship ? '' : (tile.used ? 'X': 'O')}} &lt;!&ndash;debug:mode&ndash;&gt;-->
           </td>

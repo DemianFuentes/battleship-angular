@@ -12,8 +12,30 @@ $color_background_battleship_tile: #007BFF40;
 $color_background_sunk_ship: #ff000038;
 $color_background_battleship_tile_used: #4a3535;
 $color_background_battleship_tile_selected: #41eedc;
+$background_color_result_table_lost_row: #7B000340;
+$background_color_result_table_won_row: #B5FBA960;
 
+$color_border_tile: #dbdbdb;
+$color_validation_message: #dc3545;
 $color_sunk_ship: #bd2810;
+
+$win_background_color_plain: rgb(17,136,0);
+$win_background_gradient_angle: 35deg;
+$win_background_gradient_color_stop_1: rgba(17,136,0,0.8) 0%;
+$win_background_gradient_color_stop_2: rgba(110,198,94,0.7) 35%;
+$win_background_gradient_color_stop_3: rgba(181,251,169,0.9) 100%;
+
+$loss_background_color_plain: rgb(46,0,2);
+$loss_background_gradient_angle: 35deg;
+$loss_background_gradient_color_stop_1: rgba(46,0,2,0.8) 0%;
+$loss_background_gradient_color_stop_2: rgba(82,0,2,0.7) 35%;
+$loss_background_gradient_color_stop_3: rgba(123,0,3,0.7) 100%;
+
+$win_result_text_color: #FFFFBA;
+$win_result_text_shadow: -2px -2px yellow, 2px -2px yellow, -2px 2px yellow, 2px 2px yellow;
+
+$loss_result_text_color: #FFFFBA;
+$loss_result_text_shadow: -2px -2px yellow, 2px -2px yellow, -2px 2px yellow, 2px 2px yellow;
 
 $content_sunk_ship: 'X';
 
@@ -21,24 +43,3 @@ $height_tile: 40px;
 $width_tile: 40px;
 
 $explanation_text_separator: '\00a0-\00a0';
-
-// ---
-$dark_grey: #646f79;
-$grey_disabled: #868e96;
-$alert_red: #ff3455;
-$card_overdue: #FF4F67;
-$card_new : #333740;
-$alert_green: #00bfa5;
-$light_blue: #04b0ff;
-$lighter_blue: #E6F7FF;
-$subitem_blue: #DEFDFE;
-$blue_hover: #6ecffc;
-$back_blue: #007fd3;
-$hover: #f8f9fa;
-$light_grey: #e9ecef;
-$light_grey2: #f7f7f7;
-$dark_grey2: #4A4A4A;
-$dark_grey3: #151b26;
-$dark_grey4 : #323232;
-$subitem_grey : #7a7a7a;
-$border_grey : #f2f2f2;

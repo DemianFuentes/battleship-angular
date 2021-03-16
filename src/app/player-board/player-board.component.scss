@@ -6,7 +6,7 @@
 }
 @mixin tile {
   @include noselect;
-  border: 1px solid #dbdbdb;
+  border: 1px solid $color_border_tile;
   vertical-align: middle;
   height: $height_tile;
   max-height: $height_tile;
@@ -22,9 +22,16 @@
   cursor: pointer;
   background-color: $color_background_battleship_tile;
 
-  &.sunk{
-    @extend .ship-tile;
+  &.hit {
+    background-color: $color_background_sunk_ship !important;
+    &.sunk:before {
+      content: $content_sunk_ship;
+      color: $color_sunk_ship;
+      font-weight: bold;
+      font-size: 24px;
+    }
   }
+
   &.fail {
     background-color: $color_background_battleship_tile_used !important;
   }
@@ -42,14 +49,8 @@
 
 .ship-tile {
   @include tile;
-  background-color: $color_background_sunk_ship !important;
-
-  &:before {
-    content: $content_sunk_ship;
-    color: $color_sunk_ship;
-    font-weight: bold;
-    font-size: 24px;
-  }
+  @extend .battleship-tile.hit;
+  @extend .battleship-tile.hit.sunk;
 }
 
 .sunk-ship-header {
