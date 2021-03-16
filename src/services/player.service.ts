@@ -25,7 +25,8 @@ export class PlayerService {
   }
 
   getCurrentPlayer(): Player {
-    return new Player(this.storageService.get(PlayerService.KEY_CURRENT_PLAYER));
+    const storedPlayerRecord = this.storageService.get(PlayerService.KEY_CURRENT_PLAYER);
+    return storedPlayerRecord ? new Player(storedPlayerRecord) : null;
   }
 
   storeGameResultForCurrentPlayer(gameStatus: GameResult) {
