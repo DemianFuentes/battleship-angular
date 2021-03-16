@@ -5,17 +5,48 @@ import { routes } from './app-routing.module';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { GameSetupComponent } from './game-setup/game-setup.component';
+import { LoginComponent } from './login/login.component';
+import { GameBoardComponent } from './game-board/game-board.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { PlayerBoardComponent } from './player-board/player-board.component';
+import { ResultOverlayComponent } from './result-overlay/result-overlay.component';
+import { ConfirmationModalComponent } from './confirmation-modal/confirmation-modal.component';
+import { PlayerService } from '../services/player.service';
+import { StorageService } from '../services/storage.service';
+import { BoardService } from '../services/board.service';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule.withRoutes(routes)
+        RouterTestingModule.withRoutes(routes),
+        TranslateModule.forRoot({
+          loader: { provide: TranslateLoader, useClass: TranslateFakeLoader },
+        }),
+        FormsModule,
+        ReactiveFormsModule,
+        ModalModule.forRoot()
       ],
       declarations: [
         AppComponent,
-        GameSetupComponent
+        ConfirmationModalComponent,
+        FooterComponent,
+        GameSetupComponent,
+        GameBoardComponent,
+        HeaderComponent,
+        LoginComponent,
+        PlayerBoardComponent,
+        ResultOverlayComponent
       ],
+      providers: [
+        BoardService,
+        PlayerService,
+        StorageService,
+      ]
     }).compileComponents();
   }));
 
@@ -25,13 +56,13 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   }));
 
-  it(`navigate to "" should redirect to /setup`, async(() => {
+  it(`navigate to "" should redirect to /login`, async(() => {
     const router = TestBed.get(Router);
     const location = TestBed.get(Location);
 
     router.initialNavigation();
     router.navigate(['']).then(() => {
-      expect(location.path()).toBe('/setup');
+      expect(location.path()).toBe('/login');
     });
   }));
 });

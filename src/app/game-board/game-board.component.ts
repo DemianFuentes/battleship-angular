@@ -47,8 +47,7 @@ export class GameBoardComponent implements OnInit {
   }
 
   createBoard() {
-    const board = this.boardService.createBoard();
-    this.board = board;
+    this.board = this.boardService.createBoard();
   }
 
   restartGame() {
