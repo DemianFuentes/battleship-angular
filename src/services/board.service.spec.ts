@@ -50,8 +50,8 @@ describe('BoardService', () => {
           expect(usedShip.tiles).toBeGreaterThanOrEqual(0);
 
           if (usedShip.lastRow === null) { // first tile used by the ship
-            usedShip.lastRow = currentRowIndex; //0
-            usedShip.lastCol = currentColIndex; //1
+            usedShip.lastRow = currentRowIndex;
+            usedShip.lastCol = currentColIndex;
           }
           else { // same row and move one col or same col and move one row.
             if (usedShip.lastRow === currentRowIndex) {

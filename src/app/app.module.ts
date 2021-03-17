@@ -19,6 +19,7 @@ import { PlayerService } from '../services/player.service';
 import { ResultOverlayComponent } from './result-overlay/result-overlay.component';
 import { ConfirmationModalComponent } from './confirmation-modal/confirmation-modal.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { LoginGuard } from '../guards/login.guard';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -51,7 +52,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ReactiveFormsModule,
     ModalModule.forRoot()
   ],
-  providers: [BoardService, StorageService, PlayerService],
+  providers: [BoardService, StorageService, PlayerService, LoginGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
