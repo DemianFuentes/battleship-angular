@@ -6,8 +6,12 @@ Do you want to play? Try it here: https://angular-battleship.herokuapp.com/
 
 Have fun!
 
-## Technologies
+## Table of contents
+* [Technologies](#technologies)
+* [Setup](#setup)
+* [Features](#features)
 
+## Technologies
 * Angular
 * Bootstrap
 * TypeScript
@@ -16,7 +20,6 @@ Have fun!
 * Karma
 
 ## Setup
-
 1- Clone the project `git clone git@github.com:DemianFuentes/battleship-angular.git`
 
 2- Enter the project directory `cd battleship-angular`
@@ -28,7 +31,6 @@ Have fun!
 5- In order to test the app use `npm test`
 
 ## Features
-
 * Spanish - English (the game will remember your choice).
 * Keyboard accessibility to interact with the board.
 * Summary of your games.
