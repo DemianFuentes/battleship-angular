@@ -1,9 +1,9 @@
 <div class="col mt-3" [class.disabled]="disabled">
-  <div class="row">
-    <div class="col-4">
+  <div class="row" *ngIf="board">
+    <div class="col-4 d-none d-md-block">
       <div class="row">
         <div class="col-12 sunk-ship-header">{{'Amount of sunken ships' | translate}}: {{board.getAmountOfSunkenShips()}}</div>
-        <div class="col-12">
+        <div class="col-12 d-none d-xl-block">
           <span class="explanation-text" *ngFor="let entry of shipsAmountByTiles">{{ 'shipsDescription' | translate: entry}}</span>
         </div>
         <div class="col fade" *ngFor="let ship of board.ships" [class.show]="ship.isSunk()">
@@ -15,8 +15,8 @@
         </div>
       </div>
     </div>
-    <div class="col-8">
-      <table *ngIf="board" class="board">
+    <div class="col-12 col-md-4 text-center overflow-auto">
+      <table class="board">
         <tr>
           <td class="battleship-tile-header"></td>
           <td *ngFor="let tile of board.tiles[0]; let i = index" class="battleship-tile-header">

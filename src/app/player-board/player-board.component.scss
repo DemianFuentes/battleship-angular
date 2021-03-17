@@ -17,6 +17,10 @@
   text-align: center;
 }
 
+.board {
+  margin: auto;
+}
+
 .battleship-tile {
   @include tile;
   cursor: pointer;

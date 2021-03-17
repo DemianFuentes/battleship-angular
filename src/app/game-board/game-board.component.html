@@ -1,15 +1,15 @@
 <div class="container-fluid">
   <div class="row mt-3 mb-3">
-    <div class="col text-left">
-      <button class="btn btn-info" [routerLink]="['/setup']">&#171; {{'Change difficulty' | translate}}</button>
-    </div>
     <div class="col text-center attempts-text">
       <span>{{'attempts' | translate}}: {{gameStatus.usedAttempts}}</span>
       <span *ngIf="gameStatus.totalAttemptsAllowed">/ {{gameStatus.totalAttemptsAllowed}}</span>
       <span class="ml-2">({{currentDifficulty.name | translate}})</span>
     </div>
-    <div class="col text-right">
-      <button class="btn btn-danger" (click)="restartGame()">{{'New game' | translate}} &#8634;</button>
+  </div>
+  <div class="row">
+    <div class="col text-center">
+      <button class="btn btn-info" [routerLink]="['/setup']">&#171; {{'Change difficulty' | translate}}</button>
+      <button class="btn btn-danger  ml-2 ml-5-sm" (click)="restartGame()">{{'New game' | translate}} &#8634;</button>
     </div>
   </div>
 
