@@ -13,6 +13,8 @@ export class PlayerBoardComponent implements OnInit {
   @Output() fired: EventEmitter<any> = new EventEmitter<any>();
   selectedTile = {showSelection: false, row: 0, col: 0};
   digitsPressed: string = '';
+
+  // used to show 'X ships of Y tiles' legend. (sort by tiles asc)
   shipsAmountByTiles: { tiles: number, amount: number }[];
 
   constructor() { }
