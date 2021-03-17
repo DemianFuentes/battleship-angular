@@ -1,12 +1,24 @@
 <div class="header row sticky-top">
   <div class="col-2">
-    <div class="logo clickable" [routerLink]="['/login']"></div>
+    <div class="row">
+      <div class="col">
+        <img src="assets/images/battleship.svg" class="img-fluid img-logo clickable" [routerLink]="['/login']">
+      </div>
+    </div>
   </div>
-  <div class="col-8 text-center title">
-    <span class="clickable" [routerLink]="['/login']">{{'BattleShip' | translate}}</span>
+  <div class="col-8 title">
+    <div class="row">
+      <span class="clickable m-auto" [routerLink]="['/login']">{{'BattleShip' | translate}}</span>
+    </div>
   </div>
   <div class="col-2">
-    <button [title]="'Spanish' | translate" type="button" class="btn flag flag-spanish" (click)="selectLanguage('es')"></button>
-    <button [title]="'English' | translate" type="button" class="btn flag flag-english" (click)="selectLanguage('en')"></button>
+    <div class="row h-100">
+      <button [title]="'Spanish' | translate" type="button" class="btn" (click)="selectLanguage('es')">
+        <img src="assets/images/flag-spain.png" class="img-fluid img-flag" alt="spanish">
+      </button>
+      <button [title]="'English' | translate" type="button" class="btn" (click)="selectLanguage('en')">
+        <img src="assets/images/flag-eeuu.png" class="img-fluid img-flag" alt="english">
+      </button>
+    </div>
   </div>
 </div>

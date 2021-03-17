@@ -12,28 +12,14 @@
     font-weight: bold;
   }
 
-  & .flag {
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    height: 38px;
-    width: 64px;
-    margin-left: 10px;
+  & .img-flag {
+    max-height: 38px;
   }
 
-  & .flag-spanish {
-    background-image: url("../../assets/images/flag-spain.png");
-  }
-
-  & .flag-english {
-    background-image: url("../../assets/images/flag-eeuu.png");
-  }
-
-  & .logo {
-    background-image: url("../../assets/images/battleship.svg");
-    height: 80px;
-    width: 80px;
+  & .img-logo {
+    max-height: 80px;
+    max-width: 80px;
     background-color: $color_background_logo;
     border-radius: 50px;
-    margin-top: 10px;
   }
 }

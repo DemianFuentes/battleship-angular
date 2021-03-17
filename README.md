@@ -37,3 +37,4 @@ Have fun!
 * Visual indication when a shot is missed.
 * Visual indication when a shot is landed.
 * Visual indication when a ship is sunk.
+* Responsive layout
