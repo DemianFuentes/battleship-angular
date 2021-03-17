@@ -1,27 +1,37 @@
-# BattleshipAngular
+# Battleship Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+This is a one-player version of the classic board game Battleship.
 
-## Development server
+Do you want to play? Try it here: https://angular-battleship.herokuapp.com/
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Have fun!
 
-## Code scaffolding
+## Technologies
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* Angular
+* Bootstrap
+* TypeScript
+* Express
+* Jasmine
+* Karma
 
-## Build
+## Setup
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+1- Clone the project `git clone git@github.com:DemianFuentes/battleship-angular.git`
 
-## Running unit tests
+2- Enter the project directory `cd battleship-angular`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+3- Install dependencies by running `npm install`
 
-## Running end-to-end tests
+4- Run the application using `npm start`
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+5- In order to test the app use `npm test`
 
-## Further help
+## Features
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+* Spanish - English (the game will remember your choice).
+* Keyboard accessibility to interact with the board.
+* Summary of your games.
+* Visual indication when a shot is missed.
+* Visual indication when a shot is landed.
+* Visual indication when a ship is sunk.
